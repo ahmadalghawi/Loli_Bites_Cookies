@@ -11,8 +11,12 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
 
+    if (!supabaseService) {
+      return NextResponse.json({ error: 'Supabase service is not available' }, { status: 500 });
+    }
+
     const { data: userData, error } = await supabaseService
-      ?.from('users')
+      .from('users')
       .select('role')
       .eq('id', userId)
       .single();
