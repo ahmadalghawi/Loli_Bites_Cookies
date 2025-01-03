@@ -110,13 +110,6 @@ export default function LoginPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-md mx-auto">
         <h1 className="text-2xl font-bold mb-8 text-center">Login</h1>
-        <div className="mb-8 p-4 bg-muted rounded-lg">
-          <p className="text-sm text-muted-foreground mb-2">Demo Credentials:</p>
-          <div className="space-y-1">
-            <p className="text-sm">Admin: admin@example.com / admin123</p>
-            <p className="text-sm">User: user@example.com / user123</p>
-          </div>
-        </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
