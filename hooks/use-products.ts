@@ -35,20 +35,22 @@ export function useProducts() {
     }
   }
 
-  async function addProduct(product: Partial<Product>) {
+  async function addProduct(productData: Partial<Product>) {
     try {
+      // Remove any undefined or null values
+      const cleanedData = Object.fromEntries(
+        Object.entries(productData).filter(([_, v]) => v != null)
+      );
+
       const { data, error } = await supabase
         .from("products")
-        .insert([{
-          ...product,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
-        }])
+        .insert([cleanedData])
         .select()
         .single();
 
       if (error) throw error;
-      setProducts([data, ...products]);
+
+      setProducts(prev => [data, ...prev]);
       return data;
     } catch (error) {
       console.error("Error adding product:", error);
@@ -58,18 +60,18 @@ export function useProducts() {
 
   async function updateProduct(product: Product) {
     try {
+      const { id, created_at, updated_at, ...updateData } = product;
+      
       const { data, error } = await supabase
         .from("products")
-        .update({
-          ...product,
-          updated_at: new Date().toISOString()
-        })
-        .eq("id", product.id)
+        .update(updateData)
+        .eq("id", id)
         .select()
         .single();
 
       if (error) throw error;
-      setProducts(products.map((p) => (p.id === product.id ? data : p)));
+
+      setProducts(prev => prev.map(p => p.id === id ? data : p));
       return data;
     } catch (error) {
       console.error("Error updating product:", error);
@@ -85,7 +87,7 @@ export function useProducts() {
         .in("id", ids);
 
       if (error) throw error;
-      setProducts(products.filter((p) => !ids.includes(p.id)));
+      setProducts(prev => prev.filter(p => !ids.includes(p.id)));
     } catch (error) {
       console.error("Error deleting products:", error);
       throw error;
