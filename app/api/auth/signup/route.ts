@@ -28,6 +28,11 @@ export async function POST(request: Request) {
     }
 
     // Create user profile using service role client
+    if (!supabaseService) {
+      console.error('Supabase service is not initialized');
+      return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    }
+
     const { error: profileError } = await supabaseService
       .from('users')
       .insert([{
