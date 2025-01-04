@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase';
-import { Order, OrderItem } from '@/lib/types';
+import { OrderItem } from '@/lib/types';
 
 export async function createOrder(userId: string, items: OrderItem[], total: number) {
   // Start a Supabase transaction

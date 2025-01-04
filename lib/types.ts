@@ -39,4 +39,17 @@ export interface Product {
   image_bucket_id?: string;
 }
 
+export interface OrderItem {
+
+  product: {
+
+    id: string;
+
+    price: number;
+
+  };
+
+  quantity: number;
+
+}
 export interface ProductFormData extends Omit<Product, 'id' | 'created_at' | 'updated_at' | 'image_bucket_id'> {}

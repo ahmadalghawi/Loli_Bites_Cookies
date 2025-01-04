@@ -11,10 +11,11 @@ export const supabaseAuth = createClient(supabaseUrl, supabaseAnonKey, {
       // This ensures the session is stored in cookies
       getItem: (key) => {
         if (typeof window === 'undefined') return null;
-        return document.cookie
+        const cookieValue = document.cookie
           .split('; ')
           .find((row) => row.startsWith(`${key}=`))
           ?.split('=')[1];
+        return cookieValue ?? null;
       },
       setItem: (key, value) => {
         if (typeof window === 'undefined') return;
