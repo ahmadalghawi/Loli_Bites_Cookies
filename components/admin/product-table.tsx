@@ -46,10 +46,10 @@ export function ProductTable({ products, onUpdate, onDelete }: ProductTableProps
   );
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (a[sortConfig.key] < b[sortConfig.key]) {
+    if (sortConfig.key && (a[sortConfig.key] ?? '') < (b[sortConfig.key] ?? '')) {
       return sortConfig.direction === "asc" ? -1 : 1;
     }
-    if (a[sortConfig.key] > b[sortConfig.key]) {
+    if ((a[sortConfig.key] ?? '') > (b[sortConfig.key] ?? '')) {
       return sortConfig.direction === "asc" ? 1 : -1;
     }
     return 0;
