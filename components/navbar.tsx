@@ -21,8 +21,8 @@ export function Navbar() {
 
   return (
     <header className="fixed top-0 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 z-50">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 flex">
+      <div className="container flex h-14 items-center ">
+        <div className="mr-4 flex ml-2 md:ml-10">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Cookie className="h-6 w-6" />
             <span className="font-bold">Loli Bites</span>
