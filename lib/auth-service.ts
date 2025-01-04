@@ -8,6 +8,7 @@ export async function fetchUserRole(userId: string): Promise<string> {
   try {
     const response = await fetch(`/api/auth/role?userId=${userId}`);
     if (!response.ok) throw new Error('Failed to fetch role');
+    
     const data = await response.json();
     return data.role || 'user';
   } catch (error) {

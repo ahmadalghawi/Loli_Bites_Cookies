@@ -22,7 +22,7 @@ interface CookieType {
 const cookieTypes: CookieType[] = [
   {
     name: "Classic Cookies",
-    image: "/images/classic-cookie.png",
+    image: "https://ssrbrizfnfeapzsirrtz.supabase.co/storage/v1/object/public/product-images/447913635_444144541570012_5035077315611180648_n.jpg",
     sizes: {
       mini: {
         pieces: [7, 15, 24],
@@ -36,7 +36,7 @@ const cookieTypes: CookieType[] = [
   },
   {
     name: "Chocolate Cookies",
-    image: "/images/chocolate-cookie.png",
+    image: "https://ssrbrizfnfeapzsirrtz.supabase.co/storage/v1/object/public/product-images/448008628_436198095860521_100130310239387_n.jpg",
     sizes: {
       mini: {
         pieces: [7, 15, 24],
@@ -50,7 +50,7 @@ const cookieTypes: CookieType[] = [
   },
   {
     name: "Red Velvet Cookies",
-    image: "/images/red-velvet-cookie.png",
+    image: "https://ssrbrizfnfeapzsirrtz.supabase.co/storage/v1/object/public/product-images/470923045_616847680681789_1497523270748388915_n.jpg",
     sizes: {
       mini: {
         pieces: [7, 15, 24],
@@ -64,7 +64,7 @@ const cookieTypes: CookieType[] = [
   },
   {
     name: "Pistachio Cookies",
-    image: "/images/pistachio-cookie.png",
+    image: "https://ssrbrizfnfeapzsirrtz.supabase.co/storage/v1/object/public/product-images/447999899_828460292039624_2657788014725785916_n.jpg",
     sizes: {
       mini: {
         pieces: [7, 15, 24],
@@ -78,7 +78,7 @@ const cookieTypes: CookieType[] = [
   },
   {
     name: "Cookies Cardamon and Rose Water",
-    image: "/images/cardamon-cookie.png",
+    image: "https://ssrbrizfnfeapzsirrtz.supabase.co/storage/v1/object/public/product-images/431667448_1114999826198523_2619075366569911241_n.jpg",
     sizes: {
       mini: {
         pieces: [7, 15, 24],
@@ -92,7 +92,7 @@ const cookieTypes: CookieType[] = [
   },
   {
     name: "Cookies Walnuts and Cinnamon",
-    image: "/images/walnut-cookie.png",
+    image: "https://ssrbrizfnfeapzsirrtz.supabase.co/storage/v1/object/public/product-images/447913605_805002584921454_6390691301622883456_n.jpg",
     sizes: {
       mini: {
         pieces: [7, 15, 24],

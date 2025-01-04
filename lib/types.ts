@@ -1,3 +1,15 @@
+import { User as SupabaseUser } from "@supabase/supabase-js";
+
+export interface AppUser extends SupabaseUser {
+  name?: string;
+  phoneNumber?: string;
+  postCode?: string;
+  creditCard?: string;
+  city?: string;
+  address?: string;
+  role?: string;
+}
+
 export interface Product {
   id: string;
   name: string;

@@ -4,14 +4,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { Session, User } from "@supabase/supabase-js";
 import { supabaseAuth } from "@/lib/supabase-auth";
 import { fetchUserRole, getCurrentSession } from "@/lib/auth-service";
+import { AppUser } from "@/lib/types";
 
-interface AuthUser extends User {
-  role?: string;
-}
 
 interface AuthContextType {
   session: Session | null;
-  user: AuthUser | null;
+  user: AppUser | null;
   isLoading: boolean;
   signIn: (email: string, password: string) => Promise<boolean>;
   signOut: () => Promise<void>;
@@ -27,12 +25,12 @@ const AuthContext = createContext<AuthContextType>({
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<AppUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const updateUserWithRole = async (currentUser: User) => {
     const role = await fetchUserRole(currentUser.id);
-    setUser({ ...currentUser, role });
+    setUser({ ...currentUser, role } as AppUser);
   };
 
   useEffect(() => {

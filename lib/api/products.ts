@@ -5,7 +5,7 @@ export async function getProducts() {
   const { data, error } = await supabase
     .from('products')
     .select('*');
-
+  console.log("data from product page",data);
   if (error) throw error;
   return data;
 }

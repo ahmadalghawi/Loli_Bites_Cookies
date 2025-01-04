@@ -11,6 +11,7 @@ export function useProducts() {
   const { toast } = useToast();
 
   useEffect(() => {
+    console.log("Fetching products... from useProducts");
     fetchProducts();
   }, []);
 

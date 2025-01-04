@@ -5,6 +5,7 @@ import { getServerSession } from "next-auth/next";
 export async function GET() {
   try {
     const products = await getProducts();
+    console.log("products from api/products/route.ts",products);
     return NextResponse.json(products);
   } catch (error) {
     return NextResponse.json(
