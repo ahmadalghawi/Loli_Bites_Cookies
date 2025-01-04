@@ -60,6 +60,9 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+        tab: {
+          DEFAULT: 'hsl(var(--tab))',
+        },
       },
       fontFamily: {
         dancing: ['var(--font-dancing-script)'],

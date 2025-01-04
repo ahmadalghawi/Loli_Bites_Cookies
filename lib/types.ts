@@ -39,6 +39,13 @@ export interface Product {
   image_bucket_id?: string;
 }
 
+export interface BannerContent {
+  id?: string; // UUID from Supabase
+  title: string;
+  description: string;
+  isActive: boolean;
+}
+
 export interface OrderItem {
 
   product: {

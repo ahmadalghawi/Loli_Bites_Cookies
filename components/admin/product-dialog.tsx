@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 import {
   Dialog,
   DialogContent,
@@ -52,7 +53,7 @@ export function ProductDialog({
 }: ProductDialogProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-
+  console.log('product', product, 'open', open,);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -67,6 +68,23 @@ export function ProductDialog({
       discountPercentage: 0,
     }
   });
+
+  useEffect(() => {
+    if (open) {
+      // Add a class to the body to prevent scrolling when the dialog is open
+      document.body.style.overflow = "hidden";
+    } else {
+      // Remove the class and reset styles when the dialog closes
+      document.body.style.overflow = "auto";
+      document.body.style.pointerEvents = "auto"; // Ensure pointer-events are enabled
+    }
+
+    // Cleanup function to reset styles when the component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+      document.body.style.pointerEvents = "auto";
+    };
+  }, [open]);
 
   // Reset form when product changes
   useEffect(() => {
@@ -88,6 +106,7 @@ export function ProductDialog({
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       setIsSubmitting(true);
+
       await onSubmit({
         ...values,
         id: product?.id // Include the ID for updates
@@ -247,14 +266,18 @@ export function ProductDialog({
                 control={form.control}
                 name="isOnSale"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>On Sale</FormLabel>
+                  <FormItem className="flex items-start gap-3">
+                    <FormLabel className="leading-10">On Sale</FormLabel>
                     <FormControl>
-                      <input
+                    <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                      {/* <input
                         type="checkbox"
                         checked={field.value}
                         onChange={field.onChange}
-                      />
+                      /> */}
                     </FormControl>
                     <FormMessage />
                   </FormItem>

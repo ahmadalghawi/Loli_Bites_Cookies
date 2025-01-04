@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ProductTable } from "@/components/admin/product-table";
 import { Button } from "@/components/ui/button";
 import { ProductDialog } from "@/components/admin/product-dialog";
@@ -18,6 +18,7 @@ export default function ProductsPage() {
     try {
       await addProduct(data);
       setIsAddingProduct(false);
+      document.body.style.pointerEvents = 'auto';
       toast({
         title: "Success",
         description: "Product added successfully",
@@ -31,9 +32,11 @@ export default function ProductsPage() {
     }
   };
 
+
   const handleUpdateProduct = async (data: Product) => {
     try {
       await updateProduct(data);
+      document.body.style.pointerEvents = 'auto';
       toast({
         title: "Success",
         description: "Product updated successfully",

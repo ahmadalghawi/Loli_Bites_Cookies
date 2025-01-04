@@ -7,7 +7,7 @@ interface BannerContent {
 }
 
 export const defaultBanner: BannerContent = {
-  title: "Ofer Today 🎉",
+  title: "Offer Today 🎉",
   description: "Get amazing discounts on selected cookies - Limited Time Only!",
   isActive: true,
 };

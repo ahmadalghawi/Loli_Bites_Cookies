@@ -244,7 +244,7 @@ export function ProductTable({ products, onUpdate, onDelete }: ProductTableProps
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem
-                        onClick={() => setEditingProduct(product)}
+                        onClick={() => {setEditingProduct(product),document.body.style.pointerEvents = 'none';}}
                       >
                         Edit
                       </DropdownMenuItem>
@@ -266,8 +266,8 @@ export function ProductTable({ products, onUpdate, onDelete }: ProductTableProps
       {/* Edit Product Dialog */}
       <ProductDialog
         product={editingProduct}
-        open={!!editingProduct}
-        onOpenChange={(open) => !open && setEditingProduct(null)}
+        open={editingProduct ? true : false}
+        onOpenChange={(open) => {!open && setEditingProduct(null),document.body.style.pointerEvents = 'auto';}}
         onSubmit={async (data) => {
           if (editingProduct) {
             await onUpdate({ ...editingProduct, ...data });

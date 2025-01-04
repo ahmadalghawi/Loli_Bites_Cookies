@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { Product } from "@/lib/types";
 import { ProductCard } from "@/components/product-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -11,17 +11,27 @@ interface ProductListingProps {
 }
 
 export function ProductListing({ products }: ProductListingProps) {
-  const searchParams = useSearchParams();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("all");
 
   useEffect(() => {
-    if (searchParams.get("show") === "sale") {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("show") === "sale") {
       setActiveTab("sale");
     }
-  }, [searchParams]);
+  }, []);
+
+  const handleTabChange = (value: string) => {
+    setActiveTab(value);
+    if (value === "sale") {
+      router.push("/?show=sale");
+    } else {
+      router.push("/");
+    }
+  };
 
   return (
-    <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-8">
+    <Tabs value={activeTab} onValueChange={handleTabChange} className="mb-8">
       <TabsList className="grid w-full grid-cols-2 max-w-[400px] mx-auto">
         <TabsTrigger value="all">All Cookies</TabsTrigger>
         <TabsTrigger value="sale">On Sale</TabsTrigger>

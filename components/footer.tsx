@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container px-4 py-8">
+      <div className="container px-4 py-8 w-fill mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -46,13 +46,13 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
               <li className="text-sm text-muted-foreground">
-                123 Cookie Street
+                Amman - Jordan
               </li>
               <li className="text-sm text-muted-foreground">
-                Bakery Town, BT 12345
+                
               </li>
               <li className="text-sm text-muted-foreground">
-                Phone: (555) 123-4567
+                Phone: (+962) 788128748
               </li>
               <li className="text-sm text-muted-foreground">
                 Email: info@lolibites.com
@@ -91,7 +91,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+        <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground w-full">
           <p>© {currentYear} Loli Bites. All rights reserved.</p>
         </div>
       </div>

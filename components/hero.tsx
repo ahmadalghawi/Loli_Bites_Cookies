@@ -24,9 +24,9 @@ export function Hero() {
             </p>
             <div className="space-x-4">
               <Button size="lg" asChild>
-                <Link href="#collection">Shop Now</Link>
+                <Link href="#product-tabs">Shop Now</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="secondary" asChild>
                 <Link href="/about">Learn More</Link>
               </Button>
             </div>
