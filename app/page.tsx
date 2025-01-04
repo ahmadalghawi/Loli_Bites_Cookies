@@ -2,6 +2,7 @@ import { Hero } from "@/components/hero";
 import { SalesBanner } from "@/components/sales-banner";
 import { ProductTabs } from "@/components/products/product-tabs";
 import { CookieMenu } from "@/components/cookie-menu";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -16,7 +17,9 @@ export default function Home() {
             Discover our handcrafted cookies made with love and premium ingredients
           </p>
         </section>
-        <ProductTabs />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductTabs />
+        </Suspense>
         <CookieMenu />
       </div>
     </div>
